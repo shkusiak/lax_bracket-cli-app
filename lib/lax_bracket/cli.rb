@@ -13,8 +13,11 @@ class LaxBracket::CLI
     puts "Lacrosse Bracket includes:"
     @brackets = LaxBracket::Brackets.all
     #@deals = DailyDeal::Deal.today
-    @brackets.each.with_index(1) do |bracket, i|
-      puts "#{i}. #{bracket.name} - #{bracket.teams}"
+    @brackets.each do |bracket|
+      puts "#{bracket.name}:"
+      bracket.teams.each.with_index(1) do |team, i|
+        puts "#{i}. #{team}"
+      end
     end
   end
 
