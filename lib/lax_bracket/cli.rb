@@ -12,28 +12,11 @@ class LaxBracket::CLI
   def list_brackets
     puts "Lacrosse Bracket includes:"
     # here doc - http://blog.jayfields.com/2006/12/ruby-multiline-strings-here-doc-or.html
-    puts <<-DOC.gsub /^\s*/, ''
-      Bracket #1:
-        1. Trinity
-        2. Amherst
-        3. etc.
-      Bracket #2:
-        1. Middlebury
-        2. Salisbury
-        3. etc.
-      Bracket #3:
-        1. Trinity
-        2. Amherst
-        3. etc.
-      Bracket #4:
-        1. Middlebury
-        2. Salisbury
-        3. etc.
-    DOC
+    @brackets = LaxBracket::Brackets.all
+    #@deals = DailyDeal::Deal.today
   end
 
   def menu
-
     input = nil
     while input != "exit"
       puts "Enter the number of the team you would like more info on or type list to see the teams again or type exit:"
