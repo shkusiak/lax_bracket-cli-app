@@ -12,7 +12,6 @@ class LaxBracket::CLI
   def list_brackets
     puts "Lacrosse Bracket includes:"
     @brackets = LaxBracket::Brackets.all
-    #@deals = DailyDeal::Deal.today
     @brackets.each do |bracket|
       puts "#{bracket.name}:"
       bracket.teams.each.with_index(1) do |team, i|
@@ -24,11 +23,15 @@ class LaxBracket::CLI
   def menu
     input = nil
     while input != "exit"
-      puts "Enter the number of the team you would like more info on or type list to see the teams again or type exit:"
+      puts "Enter the number of the bracket you would like more info on or type list to see the brackets again or type exit:"
       input = gets.strip.downcase
 
       if input.to_i > 0
-        puts @brackets[input.to_i-1]
+        the_bracket = @brackets[input.to_i-1]
+        puts "#{the_bracket.name}:"
+        the_bracket.teams.each.with_index(1) do |team, i|
+          puts "#{i}. #{team}"
+        end
       elsif input == "list"
         list_brackets
       else
