@@ -11,9 +11,11 @@ class LaxBracket::CLI
 
   def list_brackets
     puts "Lacrosse Bracket includes:"
-    # here doc - http://blog.jayfields.com/2006/12/ruby-multiline-strings-here-doc-or.html
     @brackets = LaxBracket::Brackets.all
     #@deals = DailyDeal::Deal.today
+    @brackets.each.with_index(1) do |bracket, i|
+      puts "#{i}. #{bracket.name} - #{bracket.teams}"
+    end
   end
 
   def menu
@@ -21,12 +23,10 @@ class LaxBracket::CLI
     while input != "exit"
       puts "Enter the number of the team you would like more info on or type list to see the teams again or type exit:"
       input = gets.strip.downcase
-      case input
-      when "1"
-        puts "More info on team 1..."
-      when "2"
-        puts "more info on team 2.."
-      when "list"
+
+      if input.to_i > 0
+        puts @brackets[input.to_i-1]
+      elsif input == "list"
         list_brackets
       else
         puts "Not sure what you want, type list or exit."
