@@ -1,10 +1,10 @@
 
-#our CLI Controller
+#Our CLI Controller
 
 class LaxBracket::CLI
 
   def call
-    puts "todays daily deals:"
+    puts "Lacrosse Bracket includes:"
   end
 
 end
