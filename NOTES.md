@@ -48,7 +48,8 @@
 
     What is a bracket?
      A bracket has a name
-     A bracket has a list of teams
+     A bracket has games
+     A bracket has a list of teams -- through games?
      A bracket has a winner -- overall winner(?)
      A bracket has rounds
 

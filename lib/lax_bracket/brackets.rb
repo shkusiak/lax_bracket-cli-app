@@ -9,29 +9,29 @@ class LaxBracket::Brackets
   end
 
   def self.scrape_brackets
-    brackets = []
+    @brackets = []
     #go to NCAA, find the brackets,
     #extract the properties
     #initiate a bracket
-
+    @brackets << self.scrape_ncaa
     # bracket_1 = self.new
     # bracket_1.name = "Bracket #1"
     # bracket_1.teams = ["Trinity", "Springfield", "Salisbury"]
     # bracket_1.winner = "Salisbury"
     # bracket_1.url = "https://www.ncaa.com/interactive-bracket/lacrosse-women/d3"
-    #
-    # bracket_2 = self.new
-    # bracket_2.name = "Bracket #2"
-    # bracket_2.teams = ["Tufts", "Bowdoin", "TCNJ"]
-    # bracket_2.winner = "TCNJ"
-    # bracket_2.url = "https://www.ncaa.com/interactive-bracket/lacrosse-women/d3"
-    #
-    # [bracket_1, bracket_2]
-    brackets
+    @brackets
   end
 
   def self.scrape_ncaa
-    doc = Nokogiri::HTML(open("https://www.ncaa.com/interactive-bracket/lacrosse-women/d3"))
-    binding.pry
+    doc = Nokogiri::HTML(open('https://www.ncaa.com/interactive-bracket/lacrosse-women/d3'))
+
+    bracket = self.new
+    bracket.name = "Bracket ##{@brackets.length + 1}"
+    #doc.search("h1.element-invisible").text
+    bracket.teams = ["team 1", "team 2", "team 3"]
+    bracket.winner = doc.search("h2").text
+    bracket.url = doc.search("h2").first.attr("href")
+    bracket
+    #binding.pry
   end
 end
