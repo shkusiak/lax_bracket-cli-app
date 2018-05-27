@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'pry'
+require 'open-uri'
 
 require_relative "./lax_bracket/version"
 require_relative './lax_bracket/cli'

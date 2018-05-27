@@ -30,4 +30,8 @@ class LaxBracket::Brackets
     brackets
   end
 
+  def self.scrape_ncaa
+    doc = Nokogiri::HTML(open("https://www.ncaa.com/interactive-bracket/lacrosse-women/d3"))
+    binding.pry
+  end
 end
