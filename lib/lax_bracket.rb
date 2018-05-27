@@ -1,3 +1,6 @@
+require 'nokogiri'
+require 'pry'
+
 require_relative "./lax_bracket/version"
 require_relative './lax_bracket/cli'
 require_relative './lax_bracket/brackets'
