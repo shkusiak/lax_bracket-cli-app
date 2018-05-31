@@ -48,6 +48,6 @@ class LaxBracket::Brackets
     bracket.winner = doc.search("h2").text
     bracket.url = doc.search("h2").first.attr("href")
     bracket
-    binding.pry
+  #  binding.pry
   end
 end
