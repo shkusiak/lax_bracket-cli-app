@@ -4,6 +4,7 @@
 class LaxBracket::CLI
 
   def call
+    #list_top_teams
     list_brackets
     menu
     goodbye
