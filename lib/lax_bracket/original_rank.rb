@@ -24,9 +24,14 @@ class LaxBracket::OriginalRank
     doc = Nokogiri::HTML(open('https://www.ncaa.com/rankings/lacrosse-women/d3/iwlca-coaches'))
 
     team = self.new
+    binding.pry
+    doc.search("td").each do |team_name|
+      team.name = team_name.text
+      team.rank = 1
+    end
 
-    team.name = doc.search("rankings-content tbody tr td").text
-    team.rank = 1
+    #team.name = doc.search("td")[1].text
+    #team.rank = 1
     # doc.search("rankings-content tbody tr").each.with_index(1) do |team_name, i|
     #   team.rank = i
     #   team.name = team_name
