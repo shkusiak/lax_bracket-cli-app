@@ -13,10 +13,10 @@ class LaxBracket::OriginalRank
     #print the list
 
     @original_ranks << self.scrape_ncaa_ranks
-
-    @original_ranks.each.with_index(1) do |team, i|
-      puts "#{i}. #{team}"
-    end
+    @original_ranks
+    # @original_ranks.each.with_index(1) do |team, i|
+    #   puts "#{i}. #{team}"
+    # end
 
   end
 
@@ -25,10 +25,12 @@ class LaxBracket::OriginalRank
 
     team = self.new
 
-    doc.search("tr td").each.with_index(1) do |team_name, i|
-      team.rank = i
-      team.name = team_name
-    end
+    team.name = doc.search("rankings-content tbody tr td").text
+    team.rank = 1
+    # doc.search("rankings-content tbody tr").each.with_index(1) do |team_name, i|
+    #   team.rank = i
+    #   team.name = team_name
+    # end
 
     team
 

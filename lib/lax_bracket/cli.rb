@@ -4,10 +4,19 @@
 class LaxBracket::CLI
 
   def call
-    #list_top_teams
-    list_brackets
+    list_original_rank
+  #  list_brackets
     menu
     goodbye
+  end
+
+  def list_original_rank
+    puts "Prior to playoffs, the rankings were:"
+    @original_ranks = LaxBracket::OriginalRank.all
+    @original_ranks
+    @original_ranks.each do |team|
+      puts "#{team.rank}. #{team.name}"
+    end
   end
 
   def list_brackets
