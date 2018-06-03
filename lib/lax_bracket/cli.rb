@@ -5,7 +5,6 @@ class LaxBracket::CLI
 
   def call
     list_pre_rank
-  #  list_brackets
     menu
     goodbye
   end
@@ -15,20 +14,10 @@ class LaxBracket::CLI
     @pre_ranks = LaxBracket::OriginalRank.all
 
     @pre_ranks.each do |team|
-      puts "#{team.rank}. #{team.name}"
+      puts "#{team.pre_rank}. #{team.name}"
     end
   end
 
-  def list_brackets
-    puts "Lacrosse Bracket includes:"
-    @brackets = LaxBracket::Brackets.all
-    @brackets.each do |bracket|
-      puts "#{bracket.name}:"
-      bracket.teams.each.with_index(1) do |team, i|
-        puts "#{i}. #{team}"
-      end
-    end
-  end
 
   def menu
     input = nil
@@ -51,6 +40,17 @@ class LaxBracket::CLI
       elsif input == "exit"
       else
         puts "Not sure what you want, type 'brackets', 'results', or 'exit'."
+      end
+    end
+  end
+
+  def list_brackets
+    puts "Lacrosse Bracket includes:"
+    @brackets = LaxBracket::Brackets.all
+    @brackets.each do |bracket|
+      puts "#{bracket.name}:"
+      bracket.teams.each.with_index(1) do |team, i|
+        puts "#{i}. #{team}"
       end
     end
   end

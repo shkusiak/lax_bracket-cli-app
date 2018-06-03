@@ -14,29 +14,28 @@
 
     user types lax-bracket
 
-    Execute original_rank
+    Execute pre_rank
 
-      Show a list of the top 25 teams prior to championships.
+      Show a list of the top 25 teams prior to playoffs.
         1. TCNJ
         2. Amherst
         3. Salisbury
         ...
+      Execute playoffs
 
     Ask the user what they would like to do?
-      >options: list_results, follow_team, list_brackets, exit
+      >options: list_results, follow_team, list_brackets, exit, or list_pre_rank
 
-    IF list_results, execute playoffs (if not already executed) and...   
-
-      Shows a list of the final rankings:
-         1. Midddlebury
-         2. TCNJ
-         3. etc.
+    IF list_results, shows a list of the final rankings:
+       1. Midddlebury
+       2. TCNJ
+       3. etc.
 
       What would you like to do next?
-        >options: original_rank, follow_team, list_brackets, exit
+        >options: list_pre_rank, follow_team, list_brackets, exit
 
 
-    IF follow_team, execute playoffs (if not already executed) and ask for a team name
+    IF follow_team ask for a team name
 
       >team_1
 
@@ -48,7 +47,7 @@
         ..."
 
       What would you like to do next?
-        >options: original_rank, list_results, follow_team, list_brackets, exit
+        >options: list_pre_rank, list_results, follow_team, list_brackets, exit
 
     IF list_brackets, show a list of teams & brackets
 
@@ -72,11 +71,11 @@
       execute follow_team(team_1)
 
       What would you like to do next?
-        >options: original_rank, list_results, follow_team, list_brackets, exit
+        >options: list-pre_rank, list_results, follow_team, list_brackets, exit
 
 
 <> DEFINING OBJECTS --
-    What is an original_rank?
+    What is pre_rank?
      Original Rank comes from: https://www.ncaa.com/rankings/lacrosse-women/d3/iwlca-coaches
      Consists of top 25 teams only
 
