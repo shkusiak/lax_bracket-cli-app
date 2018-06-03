@@ -12,9 +12,9 @@
 
 <> A command line interface for the lacrosse bracket --
 
-    user types lax-bracket
+    user types lax-bracket or ./bin/lax-bracket
 
-    Execute pre_rank
+    Execute list_pre_rank
 
       Show a list of the top 25 teams prior to playoffs.
         1. TCNJ
@@ -23,10 +23,10 @@
         ...
       Execute playoffs
 
-    Ask the user what they would like to do?
-      >options: list_results, follow_team, list_brackets, exit, or list_pre_rank
+      Ask the user what they would like to do?
+        >options: list_results, follow_team, list_brackets, exit, or list_pre_rank
 
-    IF list_results, shows a list of the final rankings:
+    IF input == list_results, shows a list of the final rankings:
        1. Midddlebury
        2. TCNJ
        3. etc.
@@ -35,7 +35,7 @@
         >options: list_pre_rank, follow_team, list_brackets, exit
 
 
-    IF follow_team ask for a team name
+    IF input == follow_team ask for a team name
 
       >team_1
 
@@ -49,7 +49,7 @@
       What would you like to do next?
         >options: list_pre_rank, list_results, follow_team, list_brackets, exit
 
-    IF list_brackets, show a list of teams & brackets
+    IF input == list_brackets, show a list of teams & brackets
 
       Bracket #1:
         1. Trinity
@@ -81,10 +81,10 @@
 
     What is a bracket?
      A bracket has a name - there are 4 brackets
-     A bracket has games
-     A bracket has a list of teams -- through games?
-     A bracket has a winner -- overall winner(?)
      A bracket has rounds
+     A bracket has games -- through rounds?
+     A bracket has a list of teams -- through games?
+     A bracket has a winner
 
     What is a round?
       A round has a name

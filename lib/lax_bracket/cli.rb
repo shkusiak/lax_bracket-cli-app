@@ -2,7 +2,8 @@
 #Our CLI Controller
 
 class LaxBracket::CLI
-
+  attr_accessor :pre_ranks
+  @pre_ranks = []
   def call
     list_pre_rank
     menu
@@ -26,11 +27,18 @@ class LaxBracket::CLI
       input = gets.strip.downcase
 
       if input.to_i > 0
-        the_bracket = @brackets[input.to_i-1]
-        puts "#{the_bracket.name}:"
-        the_bracket.teams.each.with_index(1) do |team, i|
-          puts "#{i}. #{team}"
+        # the_bracket = @brackets[input.to_i-1]
+        # puts "#{the_bracket.name}:"
+        # the_bracket.teams.each.with_index(1) do |team, i|
+        #   puts "#{i}. #{team}"
+        # end
+        @pre_ranks.each do |team|
+          if input == team.pre_rank
+            puts "more info on #{team.name}..."
+          end
         end
+
+
       elsif input == "brackets"
         list_brackets
       elsif input == "pre rankings"

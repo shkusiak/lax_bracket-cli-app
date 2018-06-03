@@ -4,7 +4,6 @@ class LaxBracket::Brackets
 
   def self.all
     # Scrape ncaa and return brackets based on that data
-
     self.scrape_brackets
   end
 
@@ -37,7 +36,7 @@ class LaxBracket::Brackets
     if bracket.name = "Bracket #1"
       bracket.games = []
       doc.search("#bracket-top-left h3.element-invisible").each do |game|
-
+        binding.pry
         game_teams = game.text
         game_score = "9 to 10"
         game_round = "round #"
@@ -48,6 +47,6 @@ class LaxBracket::Brackets
     bracket.winner = doc.search("h2").text
     bracket.url = doc.search("h2").first.attr("href")
     bracket
-  #  binding.pry
+
   end
 end
