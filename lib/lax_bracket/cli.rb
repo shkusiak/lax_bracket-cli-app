@@ -5,9 +5,14 @@ class LaxBracket::CLI
   attr_accessor :pre_ranks
   @pre_ranks = []
   def call
+    games
     #list_pre_rank
     #menu
     #goodbye
+  end
+
+  def games
+    @games = LaxBracket::Games.all
   end
 
   def list_pre_rank
