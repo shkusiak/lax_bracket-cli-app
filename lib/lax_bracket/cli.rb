@@ -5,9 +5,9 @@ class LaxBracket::CLI
   attr_accessor :pre_ranks
   @pre_ranks = []
   def call
-    list_pre_rank
-    menu
-    goodbye
+    #list_pre_rank
+    #menu
+    #goodbye
   end
 
   def list_pre_rank
