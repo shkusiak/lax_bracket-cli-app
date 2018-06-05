@@ -40,6 +40,11 @@ class LaxBracket::Games
 
       @games << game
     end
+
+    @games = @games.sort_by {|game|
+    game.id}
+
     @games
+
   end
 end
