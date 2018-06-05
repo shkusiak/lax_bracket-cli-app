@@ -2,14 +2,14 @@
 #Our CLI Controller
 
 class LaxBracket::CLI
-  attr_accessor :pre_ranks, :games
+  attr_accessor :pre_ranks, :games, :results
   @pre_ranks = []
   def call
     #games
     #follow_team
     list_pre_rank
     menu
-    #goodbye
+    goodbye
   end
 
   def games
@@ -32,6 +32,7 @@ class LaxBracket::CLI
     input = nil
     while input != "exit"
       puts "Type 'follow team', 'brackets', 'results', 'pre rankings' or 'exit':"
+      puts ""
       input = gets.strip.downcase
 
       if input.to_i > 0
@@ -43,6 +44,7 @@ class LaxBracket::CLI
         @pre_ranks.each do |team|
           if input == team.pre_rank
             puts "more info on #{team.name}..."
+            puts ""
           end
         end
 
@@ -56,8 +58,10 @@ class LaxBracket::CLI
       elsif input == "results"
         list_results
       elsif input == "exit"
+        goodbye
       else
         puts "Not sure what you want, type 'brackets', 'results', or 'exit'."
+        puts ""
       end
     end
   end
@@ -76,7 +80,7 @@ class LaxBracket::CLI
   def follow_team
     puts "Please type the name of the team you would like to follow."
     input = gets.strip
-
+    puts ""
     @games.each do |game|
       if game.winner == input
         puts "#{input} played #{game.loser} during the #{game.round} and won. The final score was #{game.score}."
@@ -84,11 +88,11 @@ class LaxBracket::CLI
         puts "#{input} played #{game.winner} during the #{game.round} and lost. The final score was #{game.score}."
       end
     end
-
+    puts ""
   end
 
   def list_results
-    results = []
+    @results = []
     @games.each do |game|
       if game.round == "Championships"
         results << game.winner
@@ -105,7 +109,9 @@ class LaxBracket::CLI
         results << game.loser
       end
     end
-    results.reverse.each.with_index(1) do |team, i|
+    @results = @results.reverse
+    @results.each.with_index(1) do |team, i|
+
       puts "#{i}. #{team}"
 
     end
@@ -114,5 +120,6 @@ class LaxBracket::CLI
 
   def goodbye
     puts "type './bin/lax-bracket' to run the program again."
+    puts ""
   end
 end
