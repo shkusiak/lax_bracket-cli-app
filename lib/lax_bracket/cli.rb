@@ -88,7 +88,28 @@ class LaxBracket::CLI
   end
 
   def list_results
-    puts "here are the results"
+    results = []
+    @games.each do |game|
+      if game.round == "Championships"
+        results << game.winner
+        results << game.loser
+      elsif game.round == "Semifinals"
+        results << game.loser
+      elsif game.round == "Quarterfinals"
+        results << game.loser
+      elsif game.round == "Third Round"
+        results << game.loser
+      elsif game.round == "Second Round"
+        results << game.loser
+      elsif game.round == "First Round"
+        results << game.loser
+      end
+    end
+    results.reverse.each.with_index(1) do |team, i|
+      puts "#{i}. #{team}"
+
+    end
+    #puts "here are the results"
   end
 
   def goodbye
