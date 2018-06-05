@@ -97,7 +97,6 @@
       A game has (2) teams
       A game has a score
       A game has a winner
-      A game has a location (?)
       Belongs to a round
 
     What is a team?

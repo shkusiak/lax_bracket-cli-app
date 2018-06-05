@@ -2,7 +2,7 @@
 #Our CLI Controller
 
 class LaxBracket::CLI
-  attr_accessor :pre_ranks
+  attr_accessor :pre_ranks, :games
   @pre_ranks = []
   def call
     games
@@ -13,6 +13,7 @@ class LaxBracket::CLI
 
   def games
     @games = LaxBracket::Games.all
+    @games
   end
 
   def list_pre_rank
