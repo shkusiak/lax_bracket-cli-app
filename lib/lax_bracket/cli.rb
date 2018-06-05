@@ -5,15 +5,16 @@ class LaxBracket::CLI
   attr_accessor :pre_ranks, :games
   @pre_ranks = []
   def call
-    games
-    #list_pre_rank
-    #menu
+    #games
+    #follow_team
+    list_pre_rank
+    menu
     #goodbye
   end
 
   def games
     @games = LaxBracket::Games.all
-    @games
+    #@games
   end
 
   def list_pre_rank
@@ -23,13 +24,14 @@ class LaxBracket::CLI
     @pre_ranks.each do |team|
       puts "#{team.pre_rank}. #{team.name}"
     end
+    games
   end
 
 
   def menu
     input = nil
     while input != "exit"
-      puts "Enter the number of the team you would like more info on or type 'brackets', 'results', 'pre rankings' or 'exit':"
+      puts "Type 'follow team', 'brackets', 'results', 'pre rankings' or 'exit':"
       input = gets.strip.downcase
 
       if input.to_i > 0
@@ -49,6 +51,8 @@ class LaxBracket::CLI
         list_brackets
       elsif input == "pre rankings"
         list_pre_rank
+      elsif input == "follow team"
+        follow_team
       elsif input == "results"
         list_results
       elsif input == "exit"
@@ -70,7 +74,17 @@ class LaxBracket::CLI
   end
 
   def follow_team
-    puts "now you are following a team"
+    puts "Please type the name of the team you would like to follow."
+    input = gets.strip
+
+    @games.each do |game|
+      if game.winner == input
+        puts "#{input} played #{game.loser} during the #{game.round} and won. The final score was #{game.score}."
+      elsif game.loser == input
+        puts "#{input} played #{game.winner} during the #{game.round} and lost. The final score was #{game.score}."
+      end
+    end
+
   end
 
   def list_results

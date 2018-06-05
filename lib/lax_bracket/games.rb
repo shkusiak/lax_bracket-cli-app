@@ -40,7 +40,6 @@ class LaxBracket::Games
 
       @games << game
     end
-    puts "#{i}"
-    puts "#{@games}"
+    @games
   end
 end
