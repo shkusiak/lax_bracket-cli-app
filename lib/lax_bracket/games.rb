@@ -14,10 +14,10 @@ class LaxBracket::Games
       game.id = new_game.search("div.bracket-game").text
       game.title = new_game.search("h3").text
       game.winner = new_game.search("div.winner .team-name").text
-      if game.winner == new_game.search("div.team-info.info-top")
-        game.loser = new_game.search("div.team-info.info-top .team-name").text
-      else
+      if game.winner == new_game.search("div.team-info.info-top .team-name").text
         game.loser = new_game.search("div.team-info.info-bottom .team-name").text
+      else
+        game.loser = new_game.search("div.team-info.info-top .team-name").text
       end
       top_score = new_game.search("div.team-info.info-top .team-score").text
       bottom_score = new_game.search("div.team-info.info-bottom .team-score").text
