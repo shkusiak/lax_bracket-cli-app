@@ -81,6 +81,19 @@ class LaxBracket::CLI
     puts "Please type the name of the team you would like to follow."
     input = gets.strip
     puts ""
+    @pre_ranks.each do |team|
+      if team.name == input
+        if team.pre_rank.to_i == 1
+          puts "Prior to playoffs, #{team.name} was in #{team.pre_rank}st place"
+        elsif team.pre_rank.to_i == 2
+          puts "Prior to playoffs, #{team.name} was in #{team.pre_rank}nd place"
+        elsif team.pre_rank.to_i == 3
+          puts "Prior to playoffs, #{team.name} was in #{team.pre_rank}nd place"
+        else
+          puts "Prior to playoffs, #{team.name} was in #{team.pre_rank}th place"
+        end
+      end
+    end
     @games.each do |game|
       if game.winner == input
         puts "#{input} played #{game.loser} during the #{game.round} and won. The final score was #{game.score}."
@@ -88,7 +101,7 @@ class LaxBracket::CLI
         puts "#{input} played #{game.winner} during the #{game.round} and lost. The final score was #{game.score}."
       end
     end
-    puts ""
+    puts "Their final rank is: "
   end
 
   def list_results
