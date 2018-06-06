@@ -13,11 +13,11 @@ class LaxBracket::Games
       i += 1
       game.id = new_game.search("div.bracket-game").text
       game.title = new_game.search("h3").text
-      game.winner = new_game.search("div.winner .team-name").text
-      if game.winner == new_game.search("div.team-info.info-top .team-name").text
-        game.loser = new_game.search("div.team-info.info-bottom .team-name").text
+      game.winner = new_game.search("div.winner .team-name").text.gsub(/\s[(]\w\w.[)]/,"").gsub(/\s[(]\w\w\w\w.[)]/,"").gsub(/\s[(]\w.\w.[)]/,"").upcase
+      if game.winner == new_game.search("div.team-info.info-top .team-name").text.gsub(/\s[(]\w\w.[)]/,"").gsub(/\s[(]\w\w\w\w.[)]/,"").gsub(/\s[(]\w.\w.[)]/,"").upcase
+        game.loser = new_game.search("div.team-info.info-bottom .team-name").text.gsub(/\s[(]\w\w.[)]/,"").gsub(/\s[(]\w\w\w\w.[)]/,"").gsub(/\s[(]\w.\w.[)]/,"").upcase
       else
-        game.loser = new_game.search("div.team-info.info-top .team-name").text
+        game.loser = new_game.search("div.team-info.info-top .team-name").text.gsub(/\s[(]\w\w.[)]/,"").gsub(/\s[(]\w\w\w\w.[)]/,"").gsub(/\s[(]\w.\w.[)]/,"").upcase
       end
       top_score = new_game.search("div.team-info.info-top .team-score").text
       bottom_score = new_game.search("div.team-info.info-bottom .team-score").text

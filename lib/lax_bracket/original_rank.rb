@@ -11,12 +11,13 @@ class LaxBracket::OriginalRank
 
     doc.search("tbody tr").each do |team_info|
       team = self.new
-      team.name = team_info.css("td")[1].text.gsub(/\W..\W/, "")
+      team.name = team_info.css("td")[1].text.gsub(/\s[(]..[)]/, "").gsub(/\s[(].[)]/, "")
       team.pre_rank = team_info.css("td")[0].text
       @teams << team
     end
 
     @teams
+    #binding.pry
   end
 
 end
