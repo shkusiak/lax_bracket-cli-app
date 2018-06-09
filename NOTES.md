@@ -21,10 +21,9 @@
         2. Amherst
         3. Salisbury
         ...
-      Execute playoffs
 
       Ask the user what they would like to do?
-        >options: list_results, follow_team, list_brackets, exit, or list_pre_rank
+        >options: list_results, follow_team, list_brackets, list_pre_rank, or exit
 
     IF input == list_results, shows a list of the final rankings:
        1. Midddlebury
@@ -32,7 +31,7 @@
        3. etc.
 
       What would you like to do next?
-        >options: list_pre_rank, follow_team, list_brackets, exit
+        >options: list_results, follow_team, list_brackets, list_pre_rank, or exit
 
 
     IF input == follow_team ask for a team name
@@ -47,7 +46,7 @@
         ..."
 
       What would you like to do next?
-        >options: list_pre_rank, list_results, follow_team, list_brackets, exit
+        >options: list_results, follow_team, list_brackets, list_pre_rank, or exit
 
     IF input == list_brackets, show a list of teams & brackets
 
@@ -56,22 +55,8 @@
         2. Amherst
         3. etc.
 
-      Which "bracket" do you want to learn more about?
-
-      >1
-
-      Shows more info on <bracket_1>
-        "<bracket_1.name> consists of:
-          [Team 1, Team 2, etc.]
-        The winner of Bracket 1 is <bracket_1.winner>
-        Which "team" do you want to learn more about? Type the number of the team you would like to learn more about."
-
-      >Team 1
-
-      execute follow_team(team_1)
-
       What would you like to do next?
-        >options: list-pre_rank, list_results, follow_team, list_brackets, exit
+        >options: list_results, follow_team, list_brackets, list_pre_rank, or exit
 
 
 <> DEFINING OBJECTS --
