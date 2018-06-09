@@ -102,19 +102,11 @@ class LaxBracket::CLI
 
   def follow_team
     puts "Please type the name of the team you would like to follow."
-    input = gets.strip
+    input = gets.strip.upcase
     puts ""
     @pre_ranks.each do |team|
       if team.name == input
-        if team.pre_rank.to_i == 1
-          puts "Prior to playoffs, #{team.name} was in #{team.pre_rank}st place"
-        elsif team.pre_rank.to_i == 2
-          puts "Prior to playoffs, #{team.name} was in #{team.pre_rank}nd place"
-        elsif team.pre_rank.to_i == 3
-          puts "Prior to playoffs, #{team.name} was in #{team.pre_rank}nd place"
-        else
-          puts "Prior to playoffs, #{team.name} was in #{team.pre_rank}th place"
-        end
+        puts "Prior to playoffs, #{team.name}'s rank was: #{team.pre_rank}"
       end
     end
     @games.each do |game|
@@ -126,18 +118,27 @@ class LaxBracket::CLI
     end
     calc_results
     if @results.include?(input)
-      puts "Their final rank is: #{@results.index(input)+1}"
+      if @results.index(input)+1 == 1
+        puts "#{input} IS THE CHAMPION!"
+      elsif @results.index(input)+1 == 2
+        puts "#{input} IS THE RUNNER UP!"
+      elsif @results.index(input)+1 == 3
+        puts "#{input} CAME IN THIRD!"
+      else
+        puts "Their final rank is: #{@results.index(input)+1}"
+      end
     else
-      puts "This team did not make it to playoffs"
+      puts "#{input} did not make it to playoffs"
     end
+    puts ""
   end
 
   def calc_results
     @results = []
     @games.each do |game|
       if game.round == "Championships"
-        results << game.winner
         results << game.loser
+        results << game.winner
       elsif game.round == "Semifinals"
         results << game.loser
       elsif game.round == "Quarterfinals"
