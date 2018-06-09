@@ -5,8 +5,6 @@ class LaxBracket::CLI
   attr_accessor :pre_ranks, :games, :results
   @pre_ranks = []
   def call
-    #games
-    #follow_team
     list_pre_rank
     menu
     goodbye
@@ -74,18 +72,20 @@ class LaxBracket::CLI
     end
 
     puts "Bracket #1:"
-
     @bracket_1.each.with_index(1) do |team, i|
       puts "#{i}. #{team}"
     end
+
     puts   "Bracket #2:"
     @bracket_2.each.with_index(1) do |team, i|
       puts "#{i}. #{team}"
     end
+
     puts   "Bracket #3:"
     @bracket_3.each.with_index(1) do |team, i|
       puts "#{i}. #{team}"
     end
+
     puts   "Bracket #4:"
     @bracket_4.each.with_index(1) do |team, i|
       puts "#{i}. #{team}"
@@ -124,10 +124,15 @@ class LaxBracket::CLI
         puts "#{input} played #{game.winner} during the #{game.round} and lost. The final score was #{game.score}."
       end
     end
-    puts "Their final rank is: "
+    calc_results
+    if @results.include?(input)
+      puts "Their final rank is: #{@results.index(input)+1}"
+    else
+      puts "This team did not make it to playoffs"
+    end
   end
 
-  def list_results
+  def calc_results
     @results = []
     @games.each do |game|
       if game.round == "Championships"
@@ -146,10 +151,12 @@ class LaxBracket::CLI
       end
     end
     @results = @results.reverse
+  end
+
+  def list_results
+    calc_results
     @results.each.with_index(1) do |team, i|
-
       puts "#{i}. #{team}"
-
     end
     #puts "here are the results"
   end
