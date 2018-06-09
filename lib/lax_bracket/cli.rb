@@ -27,7 +27,6 @@ class LaxBracket::CLI
     games
   end
 
-
   def menu
     input = nil
     while input != "exit"
@@ -52,14 +51,53 @@ class LaxBracket::CLI
   end
 
   def list_brackets
-    puts "Lacrosse Bracket includes:"
-    @brackets = LaxBracket::Brackets.all
-    @brackets.each do |bracket|
-      puts "#{bracket.name}:"
-      bracket.teams.each.with_index(1) do |team, i|
-        puts "#{i}. #{team}"
+    puts "The brackets are:"
+    @bracket_1 = []
+    @bracket_2 = []
+    @bracket_3 = []
+    @bracket_4 = []
+
+    @games.sort_by {|game| game.id}.reverse.each do |game|
+      if game.bracket == 1
+        @bracket_1 << game.loser if !@bracket_1.include?(game.loser)
+        @bracket_1 << game.winner  if !@bracket_1.include?(game.winner)
+      elsif game.bracket == 2
+        @bracket_2 << game.loser  if !@bracket_2.include?(game.loser)
+        @bracket_2 << game.winner  if !@bracket_2.include?(game.winner)
+      elsif game.bracket == 4
+        @bracket_3 << game.loser  if !@bracket_3.include?(game.loser)
+        @bracket_3 << game.winner  if !@bracket_3.include?(game.winner)
+      elsif game.bracket == 5
+        @bracket_4 << game.loser  if !@bracket_4.include?(game.loser)
+        @bracket_4 << game.winner  if !@bracket_4.include?(game.winner)
       end
     end
+
+    puts "Bracket #1:"
+
+    @bracket_1.each.with_index(1) do |team, i|
+      puts "#{i}. #{team}"
+    end
+    puts   "Bracket #2:"
+    @bracket_2.each.with_index(1) do |team, i|
+      puts "#{i}. #{team}"
+    end
+    puts   "Bracket #3:"
+    @bracket_3.each.with_index(1) do |team, i|
+      puts "#{i}. #{team}"
+    end
+    puts   "Bracket #4:"
+    @bracket_4.each.with_index(1) do |team, i|
+      puts "#{i}. #{team}"
+    end
+
+#    @brackets = LaxBracket::Brackets.all
+    # @brackets.each do |bracket|
+    #   puts "#{bracket.name}:"
+    #   bracket.teams.each.with_index(1) do |team, i|
+    #     puts "#{i}. #{team}"
+    #   end
+    # end
   end
 
   def follow_team
