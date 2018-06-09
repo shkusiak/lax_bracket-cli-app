@@ -10,12 +10,12 @@ class LaxBracket::Games
     brackets = 0
 
 
-    doc.search("#bracket-section .bracket-section").each do |bracket|
-      bracket_name = brackets + 1
+    doc.search("#bracket-section .bracket-region").each do |bracket|
+      brackets += 1
       bracket.search(".game-set.game-pos").each do |new_game|
         game = self.new
 
-        game.bracket = bracket_name
+        game.bracket = brackets
         game.id = new_game.search("div.bracket-game").text
         game.title = new_game.search("h3").text
         game.winner = new_game.search("div.winner .team-name").text.gsub(/\s[(].*[)]/,"").upcase

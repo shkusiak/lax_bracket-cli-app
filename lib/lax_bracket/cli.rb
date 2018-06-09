@@ -12,96 +12,50 @@ class LaxBracket::CLI
 
   def games
     @games = LaxBracket::Games.all
-    #@games
   end
 
   def list_pre_rank
+    puts ""
     puts "Prior to playoffs, the rankings were:"
     @pre_ranks = LaxBracket::OriginalRank.all
 
     @pre_ranks.each do |team|
       puts "#{team.pre_rank}. #{team.name}"
     end
+    puts ""
     games
   end
 
   def menu
     input = nil
     while input != "exit"
-      puts "Please type 1. follow team, 2. brackets, 3. results, 4. pre rankings or 5. exit:"
+      puts "Please type 1. follow team, 2. brackets, 3. results, 4. pre rankings or exit:"
       puts ""
       input = gets.strip.downcase
 
       if input == "follow team" || input == "1"
+        puts ""
         follow_team
       elsif input == "brackets" || input == "2"
+        puts ""
         list_brackets
       elsif input == "results" || input == "3"
+        puts ""
         list_results
       elsif input == "pre rankings" || input == "4"
         list_pre_rank
-      elsif input == "exit" || input == "5"
-        goodbye
+      elsif input == "exit"
+        #goodbye
       else
         puts "Not sure what you want,"
       end
     end
   end
 
-  def list_brackets
-    puts "The brackets are:"
-    @bracket_1 = []
-    @bracket_2 = []
-    @bracket_3 = []
-    @bracket_4 = []
-
-    @games.sort_by {|game| game.id}.reverse.each do |game|
-      if game.bracket == 1
-        @bracket_1 << game.loser if !@bracket_1.include?(game.loser)
-        @bracket_1 << game.winner  if !@bracket_1.include?(game.winner)
-      elsif game.bracket == 2
-        @bracket_2 << game.loser  if !@bracket_2.include?(game.loser)
-        @bracket_2 << game.winner  if !@bracket_2.include?(game.winner)
-      elsif game.bracket == 4
-        @bracket_3 << game.loser  if !@bracket_3.include?(game.loser)
-        @bracket_3 << game.winner  if !@bracket_3.include?(game.winner)
-      elsif game.bracket == 5
-        @bracket_4 << game.loser  if !@bracket_4.include?(game.loser)
-        @bracket_4 << game.winner  if !@bracket_4.include?(game.winner)
-      end
-    end
-
-    puts "Bracket #1:"
-    @bracket_1.each.with_index(1) do |team, i|
-      puts "#{i}. #{team}"
-    end
-
-    puts   "Bracket #2:"
-    @bracket_2.each.with_index(1) do |team, i|
-      puts "#{i}. #{team}"
-    end
-
-    puts   "Bracket #3:"
-    @bracket_3.each.with_index(1) do |team, i|
-      puts "#{i}. #{team}"
-    end
-
-    puts   "Bracket #4:"
-    @bracket_4.each.with_index(1) do |team, i|
-      puts "#{i}. #{team}"
-    end
-
-#    @brackets = LaxBracket::Brackets.all
-    # @brackets.each do |bracket|
-    #   puts "#{bracket.name}:"
-    #   bracket.teams.each.with_index(1) do |team, i|
-    #     puts "#{i}. #{team}"
-    #   end
-    # end
-  end
 
   def follow_team
     puts "Please type the name of the team you would like to follow."
+    puts ""
     input = gets.strip.upcase
     puts ""
     @pre_ranks.each do |team|
@@ -156,13 +110,61 @@ class LaxBracket::CLI
 
   def list_results
     calc_results
+    puts "The final rankings are:"
     @results.each.with_index(1) do |team, i|
       puts "#{i}. #{team}"
     end
-    #puts "here are the results"
+    puts ""
+  end
+
+
+  def list_brackets
+    puts "The brackets are:"
+    @bracket_1 = []
+    @bracket_2 = []
+    @bracket_3 = []
+    @bracket_4 = []
+
+    @games.sort_by {|game| game.id}.reverse.each do |game|
+      if game.bracket == 1
+        @bracket_1 << game.loser if !@bracket_1.include?(game.loser)
+        @bracket_1 << game.winner  if !@bracket_1.include?(game.winner)
+      elsif game.bracket == 2
+        @bracket_2 << game.loser  if !@bracket_2.include?(game.loser)
+        @bracket_2 << game.winner  if !@bracket_2.include?(game.winner)
+      elsif game.bracket == 4
+        @bracket_3 << game.loser  if !@bracket_3.include?(game.loser)
+        @bracket_3 << game.winner  if !@bracket_3.include?(game.winner)
+      elsif game.bracket == 5
+        @bracket_4 << game.loser  if !@bracket_4.include?(game.loser)
+        @bracket_4 << game.winner  if !@bracket_4.include?(game.winner)
+      end
+    end
+
+    puts "Bracket #1:"
+    @bracket_1.each.with_index(1) do |team, i|
+      puts "#{i}. #{team}"
+    end
+
+    puts   "Bracket #2:"
+    @bracket_2.each.with_index(1) do |team, i|
+      puts "#{i}. #{team}"
+    end
+
+    puts   "Bracket #3:"
+    @bracket_3.each.with_index(1) do |team, i|
+      puts "#{i}. #{team}"
+    end
+
+    puts   "Bracket #4:"
+    @bracket_4.each.with_index(1) do |team, i|
+      puts "#{i}. #{team}"
+    end
+    puts ""
   end
 
   def goodbye
+    puts ""
     puts "type './bin/lax-bracket' to run the program again."
     puts ""
   end
