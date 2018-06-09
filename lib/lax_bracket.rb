@@ -4,7 +4,6 @@ require 'open-uri'
 
 require_relative "./lax_bracket/version"
 require_relative './lax_bracket/cli'
-require_relative './lax_bracket/brackets'
 require_relative './lax_bracket/games'
 require_relative './lax_bracket/original_rank'
 
