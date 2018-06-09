@@ -31,37 +31,22 @@ class LaxBracket::CLI
   def menu
     input = nil
     while input != "exit"
-      puts "Type 'follow team', 'brackets', 'results', 'pre rankings' or 'exit':"
+      puts "Please type 1. follow team, 2. brackets, 3. results, 4. pre rankings or 5. exit:"
       puts ""
       input = gets.strip.downcase
 
-      if input.to_i > 0
-        # the_bracket = @brackets[input.to_i-1]
-        # puts "#{the_bracket.name}:"
-        # the_bracket.teams.each.with_index(1) do |team, i|
-        #   puts "#{i}. #{team}"
-        # end
-        @pre_ranks.each do |team|
-          if input == team.pre_rank
-            puts "more info on #{team.name}..."
-            puts ""
-          end
-        end
-
-
-      elsif input == "brackets"
-        list_brackets
-      elsif input == "pre rankings"
-        list_pre_rank
-      elsif input == "follow team"
+      if input == "follow team" || input == "1"
         follow_team
-      elsif input == "results"
+      elsif input == "brackets" || input == "2"
+        list_brackets
+      elsif input == "results" || input == "3"
         list_results
-      elsif input == "exit"
+      elsif input == "pre rankings" || input == "4"
+        list_pre_rank
+      elsif input == "exit" || input == "5"
         goodbye
       else
-        puts "Not sure what you want, type 'brackets', 'results', or 'exit'."
-        puts ""
+        puts "Not sure what you want,"
       end
     end
   end
