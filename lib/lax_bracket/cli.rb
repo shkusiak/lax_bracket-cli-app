@@ -127,17 +127,17 @@ class LaxBracket::CLI
 
     @games.sort_by {|game| game.id}.reverse.each do |game|
       if game.bracket == 1
-        @bracket_1 << game.loser if !@bracket_1.include?(game.loser)
         @bracket_1 << game.winner  if !@bracket_1.include?(game.winner)
+        @bracket_1 << game.loser if !@bracket_1.include?(game.loser)
       elsif game.bracket == 2
-        @bracket_2 << game.loser  if !@bracket_2.include?(game.loser)
         @bracket_2 << game.winner  if !@bracket_2.include?(game.winner)
+        @bracket_2 << game.loser  if !@bracket_2.include?(game.loser)
       elsif game.bracket == 4
-        @bracket_3 << game.loser  if !@bracket_3.include?(game.loser)
         @bracket_3 << game.winner  if !@bracket_3.include?(game.winner)
+        @bracket_3 << game.loser  if !@bracket_3.include?(game.loser)
       elsif game.bracket == 5
-        @bracket_4 << game.loser  if !@bracket_4.include?(game.loser)
         @bracket_4 << game.winner  if !@bracket_4.include?(game.winner)
+        @bracket_4 << game.loser  if !@bracket_4.include?(game.loser)
       end
     end
 
