@@ -17,7 +17,7 @@ class LaxBracket::CLI
   def list_pre_rank
     puts ""
     puts "Prior to playoffs, the rankings were:"
-    @pre_ranks = LaxBracket::OriginalRank.all
+    @pre_ranks = LaxBracket::PreRank.all
 
     @pre_ranks.each do |team|
       puts "#{team.pre_rank}. #{team.name}"
