@@ -77,25 +77,25 @@
 
 <> DEFINING OBJECTS --
     What is pre_rank?
-     Original Rank comes from: https://www.ncaa.com/rankings/lacrosse-women/d3/iwlca-coaches
-     Consists of top 25 teams only
-     Not all teams have a pre_rank
-     Not all ranked teams go to playoffs
+      Original Rank comes from: https://www.ncaa.com/rankings/lacrosse-women/d3/iwlca-coaches
+      Consists of top 25 teams only
+      Not all teams have a pre_rank
+      Not all ranked teams go to playoffs
 
-   What is a game?
-     A game has an :id
-     A game has a :title
-     A game has (2) teams - :winner & :loser
-     A game has a :score
-     A game has a :round - can be determined from :id
-     A game has a :bracket
+    What is a game?
+      A game has an :id
+      A game has a :title
+      A game has (2) teams - :winner & :loser
+      A game has a :score
+      A game has a :round - can be determined from :id
+      A game has a :bracket
 
-   What is a bracket?
-     A bracket has a name - there are 4 brackets
-     A bracket has rounds
-     A bracket has games
-     A bracket has a list of teams
-     A bracket has a winner
+    What is a bracket?
+      A bracket has a name - there are 4 brackets
+      A bracket has rounds
+      A bracket has games
+      A bracket has a list of teams
+      A bracket has a winner
 
     What is a round?
       A round has a name
