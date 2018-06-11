@@ -76,6 +76,7 @@
     Execute list_pre_rank
 
 <> DEFINING OBJECTS --
+
     What is pre_rank?
       Original Rank comes from: https://www.ncaa.com/rankings/lacrosse-women/d3/iwlca-coaches
       Consists of top 25 teams only
