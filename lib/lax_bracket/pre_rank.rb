@@ -11,7 +11,18 @@ class LaxBracket::PreRank
 
     doc.search("tbody tr").each do |team_info|
       team = self.new
-      team.name = team_info.css("td")[1].text.gsub(/\s[(].*[)]/, "").upcase
+      team_name_scrape = team_info.css("td")[1].text.gsub(/\s[(].*[)]/, "").upcase
+      if team_name_scrape == "CLAREMONT-MUDD-SCRIPPS"  #because of discrepancies in ncaa.com
+        team.name = "CLAREMONT-M-S"
+      elsif team_name_scrape == "FRANKLIN & MARSHALL"
+        team.name = "FRANK. & MARSH."
+      elsif team_name_scrape == "WASHINGTON AND LEE"
+        team.name = "WASHINGTON & LEE"
+      elsif team_name_scrape == "STEVENS"
+        team.name = "STEVENS INST."
+      else
+        team.name = team_name_scrape
+      end
       team.pre_rank = team_info.css("td")[0].text
       @teams << team
     end
