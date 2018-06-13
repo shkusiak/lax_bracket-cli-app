@@ -16,6 +16,7 @@ class LaxBracket::CLI
 
   def list_pre_rank
     puts ""
+    puts "Welcome to the 2018 NCAA D3 Women's Lacrosse Playoffs"
     puts "Prior to playoffs, the rankings were:"
     @pre_ranks = LaxBracket::PreRank.all
 
