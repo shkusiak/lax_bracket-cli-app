@@ -144,22 +144,38 @@ class LaxBracket::CLI
 
     puts "Bracket #1:"
     @bracket_1.each.with_index(1) do |team, i|
-      puts "#{i}. #{team}"
+      if i == 1
+        puts "#{i}. #{team}     <-- BRACKET WINNER"
+      else
+        puts "#{i}. #{team}"
+      end
     end
 
     puts   "Bracket #2:"
     @bracket_2.each.with_index(1) do |team, i|
-      puts "#{i}. #{team}"
+      if i == 1
+        puts "#{i}. #{team}     <-- BRACKET WINNER"
+      else
+        puts "#{i}. #{team}"
+      end
     end
 
     puts   "Bracket #3:"
     @bracket_3.each.with_index(1) do |team, i|
-      puts "#{i}. #{team}"
+      if i == 1
+        puts "#{i}. #{team}     <-- BRACKET WINNER"
+      else
+        puts "#{i}. #{team}"
+      end
     end
 
     puts   "Bracket #4:"
     @bracket_4.each.with_index(1) do |team, i|
-      puts "#{i}. #{team}"
+      if i == 1
+        puts "#{i}. #{team}     <-- BRACKET WINNER"
+      else
+        puts "#{i}. #{team}"
+      end
     end
     puts ""
   end
