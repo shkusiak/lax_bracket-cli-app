@@ -3,7 +3,6 @@ class LaxBracket::Scraper
   @@games = []
   @@pre_ranks = []
 
-
   def self.scrape_games
     doc = Nokogiri::HTML(open('https://www.ncaa.com/interactive-bracket/lacrosse-women/d3'))
 
