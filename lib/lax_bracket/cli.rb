@@ -1,6 +1,3 @@
-
-#Our CLI Controller
-
 class LaxBracket::CLI
   attr_accessor :pre_ranks, :games, :results
 

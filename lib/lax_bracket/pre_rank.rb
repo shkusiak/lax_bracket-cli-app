@@ -1,5 +1,4 @@
 class LaxBracket::PreRank
-#  attr_accessor :name, :pre_rank
   @@all = []
 
   def self.all
