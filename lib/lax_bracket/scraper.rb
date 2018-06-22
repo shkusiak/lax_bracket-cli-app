@@ -1,12 +1,11 @@
 class LaxBracket::Scraper
+  attr_accessor :id, :title, :winner, :loser, :score, :round, :bracket, :name, :pre_rank
   @@games = []
-  attr_accessor :id, :title, :winner, :loser, :score, :round, :bracket
-
   @@pre_ranks = []
-  attr_accessor :name, :pre_rank
+
 
   def self.scrape_games
-    doc = Nokogiri::HTML(open('https://www.ncaa.com/rankings/lacrosse-women/d3/iwlca-coaches'))
+    doc = Nokogiri::HTML(open('https://www.ncaa.com/interactive-bracket/lacrosse-women/d3'))
 
     brackets = 0
 
@@ -52,7 +51,7 @@ class LaxBracket::Scraper
 
     @@games = @@games.sort_by {|game| game.id}
 
-    #@@games
+    @@games
 
   end
 
@@ -79,7 +78,7 @@ class LaxBracket::Scraper
       @@pre_ranks << team
     end
 
-  #  @@pre_ranks
+    @@pre_ranks
   end
 
   def self.games

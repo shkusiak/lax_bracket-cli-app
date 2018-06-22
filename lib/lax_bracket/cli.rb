@@ -5,6 +5,8 @@ class LaxBracket::CLI
   attr_accessor :pre_ranks, :games, :results
 
   def call
+    LaxBracket::Scraper.scrape_games
+    LaxBracket::Scraper.scrape_pre_ranks
     list_pre_rank
     menu
     goodbye
