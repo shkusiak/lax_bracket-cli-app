@@ -1,0 +1,4 @@
+class LaxBracket::Scraper
+
+
+end
