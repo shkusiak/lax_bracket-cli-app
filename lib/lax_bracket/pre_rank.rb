@@ -1,5 +1,6 @@
 class LaxBracket::PreRank
   attr_accessor :name, :pre_rank
+  @@all = []
 
   def self.all
     self.scrape_ncaa_ranks
@@ -7,7 +8,6 @@ class LaxBracket::PreRank
 
   def self.scrape_ncaa_ranks
     doc = Nokogiri::HTML(open('https://www.ncaa.com/rankings/lacrosse-women/d3/iwlca-coaches'))
-    @teams = []
 
     doc.search("tbody tr").each do |team_info|
       team = self.new
@@ -24,10 +24,10 @@ class LaxBracket::PreRank
         team.name = team_name_scrape
       end
       team.pre_rank = team_info.css("td")[0].text
-      @teams << team
+      @@all << team
     end
 
-    @teams
+    @@all
     #binding.pry
   end
 

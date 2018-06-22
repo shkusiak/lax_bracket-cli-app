@@ -1,5 +1,7 @@
 class LaxBracket::Games
   attr_accessor :id, :title, :winner, :loser, :score, :round, :bracket
+  @@all = []
+
   def self.all
     self.scrape_games
   end
@@ -43,13 +45,13 @@ class LaxBracket::Games
           game.round = "First Round"
         end
 
-        @games << game
+        @@all << game
       end
     end
-    @games = @games.sort_by {|game|
+    @@all = @@all.sort_by {|game|
     game.id}
 
-    @games
+    @@all
 
   end
 end
