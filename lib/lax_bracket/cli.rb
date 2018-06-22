@@ -3,7 +3,7 @@
 
 class LaxBracket::CLI
   attr_accessor :pre_ranks, :games, :results
-  @pre_ranks = []
+
   def call
     list_pre_rank
     menu
