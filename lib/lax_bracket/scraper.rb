@@ -1,6 +1,9 @@
 class LaxBracket::Scraper
   @@games = []
+  attr_accessor :id, :title, :winner, :loser, :score, :round, :bracket
+
   @@pre_ranks = []
+  attr_accessor :name, :pre_rank
 
   def self.scrape_games
     doc = Nokogiri::HTML(open('https://www.ncaa.com/rankings/lacrosse-women/d3/iwlca-coaches'))
@@ -46,9 +49,10 @@ class LaxBracket::Scraper
         @@games << game
       end
     end
+
     @@games = @@games.sort_by {|game| game.id}
 
-    @@games
+    #@@games
 
   end
 
@@ -58,6 +62,7 @@ class LaxBracket::Scraper
     doc.search("tbody tr").each do |team_info|
       team = self.new
       team_name_scrape = team_info.css("td")[1].text.gsub(/\s[(].*[)]/, "").upcase
+
       if team_name_scrape == "CLAREMONT-MUDD-SCRIPPS"  #because of discrepancies in ncaa.com
         team.name = "CLAREMONT-M-S"
       elsif team_name_scrape == "FRANKLIN & MARSHALL"
@@ -69,19 +74,20 @@ class LaxBracket::Scraper
       else
         team.name = team_name_scrape
       end
+
       team.pre_rank = team_info.css("td")[0].text
       @@pre_ranks << team
     end
 
-    @@pre_ranks
+  #  @@pre_ranks
   end
 
   def self.games
-    self.scrape_games
+    @@games
   end
 
   def self.pre_ranks
-    self.scrape_pre_ranks
+    @@pre_ranks
   end
 
 end
