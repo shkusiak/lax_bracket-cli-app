@@ -45,7 +45,8 @@ class LaxBracket::Scraper
           game.round = "First Round"
         end
 
-        @@games << game
+        self.save_game(game)
+
       end
     end
 
@@ -53,6 +54,14 @@ class LaxBracket::Scraper
 
     @@games
 
+  end
+
+  def self.save_game(game)
+    @@games << game
+  end
+
+  def self.save_pre_rank(team)
+    @@pre_ranks << team
   end
 
   def self.scrape_pre_ranks
@@ -75,7 +84,8 @@ class LaxBracket::Scraper
       end
 
       team.pre_rank = team_info.css("td")[0].text
-      @@pre_ranks << team
+
+      self.save_pre_rank(team)
     end
 
     @@pre_ranks
