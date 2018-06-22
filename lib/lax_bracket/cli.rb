@@ -82,7 +82,7 @@ class LaxBracket::CLI
         puts "Their final rank is: #{@results.index(input)+1}"
       end
     else
-      puts "#{input} did not make it to playoffs"
+      puts "#{input} did not make it to playoffs" #not all teams make it to playoffs
     end
     puts ""
   end
@@ -119,7 +119,6 @@ class LaxBracket::CLI
 
 
   def list_brackets
-    puts "The brackets are:"
     @bracket_1 = []
     @bracket_2 = []
     @bracket_3 = []
@@ -140,6 +139,8 @@ class LaxBracket::CLI
         @bracket_4 << game.loser  if !@bracket_4.include?(game.loser)
       end
     end
+
+    puts "The brackets are:"
 
     puts "Bracket #1:"
     @bracket_1.each.with_index(1) do |team, i|
