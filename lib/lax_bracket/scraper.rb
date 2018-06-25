@@ -1,5 +1,9 @@
 class LaxBracket::Scraper
   attr_accessor :id, :title, :winner, :loser, :score, :round, :bracket, :name, :pre_rank
+
+  # The scraper class really shouldn't have any persisted info.  The data represented by these
+  # two class variables should be represented in their respective classes, ususally by a class variable
+  # called @@all
   @@games = []
   @@pre_ranks = []
 
@@ -90,6 +94,7 @@ class LaxBracket::Scraper
     @@pre_ranks
   end
 
+  # If we remove the class variables, we can also remove these getter methods...
   def self.games
     @@games
   end
