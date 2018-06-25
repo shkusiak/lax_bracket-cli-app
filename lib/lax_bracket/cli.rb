@@ -9,6 +9,10 @@ class LaxBracket::CLI
     goodbye
   end
 
+  # If you're going to have an instance variable to hold
+  # all the games, use the getter method that you've built
+  # here when you're referencing it..  You could, though,
+  # just refer to LaxBracket::Games.all each time.
   def games
     @games = LaxBracket::Games.all
   end
@@ -58,6 +62,9 @@ class LaxBracket::CLI
     puts ""
     input = gets.strip.upcase
     puts ""
+    # Might be nice to build a class finder method for PreRank, such as
+    # LaxBracket::PreRank.find_by_team(team) rather than filtering them
+    # here in the `if` statement
     @pre_ranks.each do |team|
       if team.name == input
         puts "Prior to playoffs, #{team.name}'s rank was: #{team.pre_rank}"
